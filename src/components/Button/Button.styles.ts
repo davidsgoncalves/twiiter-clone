@@ -36,5 +36,3 @@ export const Button = styled.button<ButtonProps>`
         border: 2px solid #1DA1F2; 
     `}
 `;
-
-export default Button;
