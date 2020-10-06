@@ -1,19 +1,12 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import Button from './components/Button/Button';
+import Routes from './routes/route';
 
 const App = () => (
-  <>
-    <Button sizeVertical="S" sizeHorizontal="container" colorTheme="default" type="submit">Seguir</Button>
-
-    <Button sizeVertical="S" sizeHorizontal="text" colorTheme="default" type="submit">Seguir</Button>
-    <Button sizeVertical="M" sizeHorizontal="text" colorTheme="default" type="submit">Seguir</Button>
-    <Button sizeVertical="L" sizeHorizontal="text" colorTheme="default" type="submit">Seguir</Button>
-
-    <Button sizeVertical="S" sizeHorizontal="text" colorTheme="dark" type="submit">Seguir</Button>
-
-    <Button sizeVertical="S" sizeHorizontal="container" colorTheme="dark" type="submit">Seguir</Button>
-  </>
+  <Router>
+    <Routes />
+  </Router>
 );
 
 export default App;
