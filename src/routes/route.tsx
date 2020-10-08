@@ -3,12 +3,12 @@ import { Switch } from 'react-router-dom';
 
 import Route from './RouteRedirect';
 
-import Main from '../pages/Main/main';
+import Login from '../pages/Login/login';
 import Dashboard from '../pages/Dashboard/dashboard';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={Main} />
+    <Route path="/" exact component={Login} />
     {/* <Route path="/signup" component={SignUp} /> */}
 
     <Route path="/dashboard" component={Dashboard} isPrivate />
