@@ -28,7 +28,11 @@
         "arrow-body-style": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
         "import/extensions": 0,
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": 0,
+        "no-unused-vars": ["error", { "varsIgnorePattern": "^[A-Z]"}],
+        "react/jsx-uses-vars": "error",
+        "react/jsx-uses-react": "error",
+        "object-curly-newline": 0
     },
     "settings": {
         "import/resolver": {

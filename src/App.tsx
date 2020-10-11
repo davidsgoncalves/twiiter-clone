@@ -8,7 +8,7 @@ import GlobalStyle from './styles/globals';
 const App = () => (
   <Router>
     <Routes />
-    <GlobalStyle/>
+    <GlobalStyle />
   </Router>
 );
 
