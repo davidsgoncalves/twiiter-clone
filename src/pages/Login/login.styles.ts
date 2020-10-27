@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+interface FormProps {
+  onSubmit: HTMLDivElement;
+}
+
+export const Content = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; 
   align-items: center;
   margin-top: 25px;
-  padding: 0 200px;
+  background-color: '#aaa';
 
   img {
     width: 37px;
@@ -18,15 +22,21 @@ export const Container = styled.div`
     margin-top: 35px;
     font-size: 25px;
   }
+  a {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    display: block;
+    text-decoration: none;
+    color: #1DA1F2;
+  }
+`;
 
-  div {
+export const Form = styled.div<FormProps>`
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 5px 0;
-    width: 100%;
-
-
-  }
-
+    align-items: center;
+    padding: 10px 0;
+    align-items: stretch; 
 `;

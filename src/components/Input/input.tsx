@@ -4,7 +4,7 @@ import { InputProps } from './Input.interfaces';
 
 import * as Styled from './Input.styles';
 
-const Input = ({ name }: InputProps) => {
+const Input = ({ name, type, placeholder }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -22,10 +22,13 @@ const Input = ({ name }: InputProps) => {
   return (
     <Styled.Input>
       <input
+        name={name}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         /* defaultValue={defaultValue} */
         ref={inputRef}
+        placeholder={placeholder}
+        type={type}
       />
     </Styled.Input>
   );

@@ -11,7 +11,7 @@ export const Button = styled.button<ButtonProps>`
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
     padding: 10px;
-    font-size: 20px;
+    font-size: 14px;
     text-align: center;
     margin-top: 16px;
     transition: background-color 0.2s;
