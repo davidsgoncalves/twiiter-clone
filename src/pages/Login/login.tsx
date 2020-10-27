@@ -20,8 +20,22 @@ const Login = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('Required'),
+        .required('E-mail obrigatório'),
+      password: Yup.string().required('Preencha a senha'),
+    }),
+    onSubmit: (values) => {
+      console.log(JSON.stringify(values, null, 2));
+    },
+  });
+
+  const formikModal = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .required('E-mail obrigatório'),
       password: Yup.string().required('Preencha a senha'),
     }),
     onSubmit: (values) => {
@@ -43,9 +57,26 @@ const Login = () => {
         <img src={logoTwitter} alt="Twitter" />
         <h1>Entrar no Twitter</h1>
         <form onSubmit={formik.handleSubmit}>
-          <Input name="email" type="email" placeholder="E-mail" />
-          <Input id="password" name="password" type="password" placeholder="Senha" />
-          <button type="submit">Submit</button>
+          <input
+            name="email"
+            type="email"
+            placeholder="E-mail"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+          {formik.touched.email && formik.errors.email ? (
+            <div>{formik.errors.email}</div>
+          ) : <p />}
+          <input
+            name="password"
+            type="password"
+            placeholder="Senha"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+          {formik.touched.password && formik.errors.password ? (
+            <div>{formik.errors.password}</div>
+          ) : <p />}
           <Button sizeVertical="S" sizeHorizontal="container" colorTheme="normal" type="submit">Entrar</Button>
         </form>
 
@@ -54,22 +85,44 @@ const Login = () => {
           <button type="button" onClick={openModal}>Inscrever-se no Twitter</button>
         </div>
 
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="teste de modal" appElement={document.getElementById('root') as HTMLElement}>
-          <Row>
-            <Col>
-              <img src={logoTwitter} alt="Twitter" style={{ width: '37px', height: '37px' }} />
-            </Col>
-            <Col>
-              <Button sizeVertical="S" sizeHorizontal="" colorTheme="normal">Avançar</Button>
-            </Col>
-          </Row>
-          <h2>Criar sua conta</h2>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="modal" appElement={document.getElementById('root') as HTMLElement}>
+          <form onSubmit={formikModal.handleSubmit}>
+            <Row>
+              <Col>
+                <img src={logoTwitter} alt="Twitter" style={{ width: '37px', height: '37px' }} />
+              </Col>
+              <Col>
+                <Button sizeVertical="S" sizeHorizontal="" colorTheme="normal" type="submit">Avançar</Button>
+              </Col>
+            </Row>
+            <h2>Criar sua conta</h2>
 
-          <form>
-            <Input name="name" type="text" placeholder="E-mail" />
-            <Input name="email" type="email" placeholder="Senha" />
+            <input
+              name="email"
+              type="email"
+              placeholder="E-mail"
+              onChange={formikModal.handleChange}
+              value={formikModal.values.email}
+            />
+            {formikModal.touched.email && formikModal.errors.email ? (
+              <div>{formikModal.errors.email}</div>
+            ) : <p />}
+            <input
+              name="password"
+              type="password"
+              placeholder="Senha"
+              onChange={formikModal.handleChange}
+              value={formikModal.values.password}
+            />
+            {formikModal.touched.password && formikModal.errors.password ? (
+              <div>{formikModal.errors.password}</div>
+            ) : <p />}
             <h4>Data de Nascimento</h4>
-            <p>Isso não será exibido publicamente. Confirme sua própria idade, mesmo se esta conta for de empresa, de um animal de estimação ou outros.</p>
+            <p>
+              Isso não será exibido publicamente.
+              Confirme sua própria idade, mesmo se esta conta for de empresa,
+              de um animal de estimação ou outros.
+            </p>
             <select>
               {months.map((month) => <option key={month.value}>{month.name}</option>)}
             </select>

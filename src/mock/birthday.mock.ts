@@ -49,8 +49,8 @@ export const months = [
   },
 ];
 
-const year = (new Date()).getFullYear();
-export const years = Array.from(new Array(99), (val, index) => index - year);
+const year = (new Date('1900-01-01')).getFullYear();
+export const years = Array.from(new Array(99), (val, index) => index + year);
 
 export const days = [
   {
